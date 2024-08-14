@@ -1,0 +1,127 @@
+---
+import ForgotP from '../../../src/icons/forgot-password.webp'
+import Envolepe from '../../icons/envelope-solid-purple.svg'
+import '../components/Register.css'
+---
+<head>
+    <title>Forgot Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h2 class="left-text">Dont Be Panic We Are Here To Help You Out!</h2>
+        </div>
+        <img src={ForgotP.src} alt="Music Player" height="450" width="500" class="equipment" style="margin-top: 150px;">
+        <div class="form" style="margin-left: -90px;">
+            <h1 class="heading">Forgot Password</h1>
+            <p class="details">Enter the Email which you have used to create your account so we can send you a otp to change your password.</p>
+            <form action="">
+                <div class="seprate-field" style="display: flex; flex-direction: row;">
+                    <input type="email" id="input-box" class="password" required style="width: 470px; width: 350px;">
+                    <label class="label" style="padding-left:5px;">Email</label>
+                    <img src={Envolepe.src} alt="" height="20" class="icon">
+                    <button class="btn otp-btn" id="sendOTPButton">Get OTP</button>
+                </div>
+                <div class="seprate-field">
+                    <input type="number" class="otp" id="otpInput1" maxlength="1" disabled style="margin-left: 220px;"/>
+                    <input type="number" class="otp" id="otpInput2" maxlength="1" disabled/>
+                    <input type="number" class="otp" id="otpInput3" maxlength="1" disabled/>
+                    <input type="number" class="otp" id="otpInput4" maxlength="1" disabled/>
+                    <br>
+                </div>
+                <span id="timer"></span>
+                <br>
+                <button id="redirect"type="button" class="btn" style="margin: 0px 0px 0px 220px; width: 510px;" disabled>Verify It</button>
+                <p class="member" style="margin: 20px 0px 0px 225px;">Got the Password?<a href='/components/Login' class="anchor">Login!</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+<style>
+    .heading {
+        padding-top: 100px;
+    }
+
+    .otp-btn {
+        margin: 15px 0px -60px 630px;
+        height: 50px;
+        width: 100px;
+        z-index: 1111;
+    }
+
+    .details {
+        margin: 0px 0px 0px 220px;
+        width: 500px;
+        font-size: 17px;
+    }
+
+    .otp {
+        margin: 80px 0px 0px 20px;
+        width: 25px;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid #000;
+        padding-left: 17px;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .otp::-webkit-outer-spin-button,
+    .otp::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    button:disabled, input:disabled {
+        cursor: not-allowed;
+    }
+
+    #timer {
+        margin: 0px 0px 0px 220px;
+    }
+</style>
+
+<script>
+    const sendOTPButton = document.getElementById('sendOTPButton') as HTMLInputElement;
+    const otpInputs = document.querySelectorAll('.otp') as NodeListOf<HTMLInputElement>;
+    const verifyButton = document.querySelector('button[type="button"]') as HTMLButtonElement;
+    const timerDisplay = document.getElementById('timer');
+    let timerInterval;
+
+    sendOTPButton.addEventListener('click', function() {
+        otpInputs.forEach(input => input.disabled = false);
+        sendOTPButton.disabled = true;
+        verifyButton.disabled = false;
+        otpInputs[0].focus();
+        var secondsLeft = 30;
+        timerInterval = setInterval(() => {
+            secondsLeft--;
+            if (secondsLeft < 0) {
+                clearInterval(timerInterval);
+                timerDisplay.textContent = `Resend OTP`;
+                timerDisplay.style.cursor = 'pointer';
+                timerDisplay.style.textDecoration = 'underline';
+                sendOTPButton.disabled = false;
+                // Disable OTP inputs after 30 seconds
+                otpInputs.forEach(input => input.disabled = true);
+            } else {
+                // Update timer display
+                timerDisplay.textContent = `Time left: ${secondsLeft}s`;
+            }
+        }, 1000);
+    });
+
+    otpInputs.forEach((input, index) => {
+        input.addEventListener('input', function() {
+            if (this.value.length === 1 && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
+            } else if (this.value.length === 0 && index > 0) {
+                otpInputs[index - 1].focus();
+            }
+        });
+    });
+
+    document.getElementById('redirect').addEventListener('click', function() {
+    window.location.href = '/components/ResetPassword';
+});
+</script>

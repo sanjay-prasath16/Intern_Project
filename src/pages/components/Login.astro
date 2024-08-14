@@ -1,0 +1,51 @@
+---
+import Equipment from '../../../src/assets/music_equipment.png'
+import Envolepe from '../../icons/envelope-solid-purple.svg'
+import Lock from '../../icons/lock-solid-purple.svg'
+import '../components/Register.css'
+---
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h2 class="left-text">Unlock Your Musical Journey with HarmonyHub  Join Now!</h2>
+        </div>
+        <img src={Equipment.src} alt="Music Player" height="400" width="500" class="equipment">
+        <div class="form">
+            <h1 class="heading">Access your Beat,Sign Up!</h1>
+            <form action="">
+                <div class="seprate-field">
+                    <input type="email" id="input-box" class="password" required style="width: 470px;">
+                    <label class="label" style="padding-left:5px;">Email</label>
+                    <img src={Envolepe.src} alt="" height="20" class="icon">
+                </div>
+                <div class="seprate-field" style="padding: 70px 0px 0px 0px; margin-bottom: -80px;">
+                    <input type="password" id="password" required style="width: 470px;">
+                    <label class="label">Password</label>
+                    <button type="button" id="button"><img src={Lock.src} alt="" height="20" id="lock-icon" class="icon lock-icon"></button>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" style="cursor: pointer;">I have read the Terms and Conditions</label>
+                    <label><a href="../components/Forgot" class="anchor" style="margin-left: 130px;">Forgot Password?</a></label>
+                </div>
+                <button type="submit" class="btn" style="margin-top: 20px; width: 510px;">Jump In</button>
+                <p class="member" style="margin: 20px 0px 0px 225px;">Unlock More Tunes?<a href='/' class="anchor">Register Now!</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("button").onclick = togglePassword;
+
+    function togglePassword() {
+        var passwordField = document.getElementById("password") as HTMLInputElement;
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+</script>

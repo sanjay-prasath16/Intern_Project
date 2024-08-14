@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    border: 1px solid #fff;
+    margin: -10px;
+    padding: 0px;
+    width: 500px;
+    height: 620px;
+    background: linear-gradient(to right top, #fed0c5, #f5a7ac, #e37fa4, #c35da9, #8b47b5);
+}
+
+.equipment {
+    z-index: 1111;
+    margin: 200px 0px 0px -420px;
+}
+
+.left-text {
+    font-size: 32px;
+    width: 350px;
+    color: #fff;
+    margin: 100px 0px 0px 0px;
+    text-align: center;
+    margin: 50px 0px 0px 40px;
+}
+
+.form {
+    border: 1px solid #fff;
+    width: 1060px;
+    border-radius: 20px;
+    height: 618px;
+    margin: -8px 0px -10px -30px;
+    background-color: #fff;
+}
+
+.heading {
+    padding: 120px 0px 0px 220px;
+}
+
+.seprate-field {
+    position: relative;
+    line-height: 80px;
+}
+
+#input-box, #password {
+    position: absolute;
+    margin: 20px 0px 0px 220px;
+    padding: 0px 0px 0px 40px;
+    outline: none;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    transition: 0.1s, ease;
+    background: transparent;
+    z-index: 1;
+}
+
+.label {
+    position: absolute;
+    margin-left: 260px;
+    height: 20px;
+    background-color: #fff;
+    transition: 0.2s, ease;
+    z-index: 1111;
+}
+
+input:focus + .label,
+input:valid + .label {
+    line-height: 30px;
+    transform: translate(-1px, 7px) scale(0.88);
+}
+
+.icon {
+    position: absolute;
+    margin: 29px 0px 0px 235px;
+}
+
+.lock-icon {
+    margin: -16px 0px 0px 230px;
+    cursor: pointer;
+    z-index: 1111;
+}
+
+#button {
+    background: none;
+    border: none;
+}
+
+.checkbox:hover , .btn:hover {
+    cursor: pointer;
+}
+
+.checkbox , .member , .btn {
+    margin: 80px 0px 0px 220px;
+}
+
+.btn {
+    width: 460px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    background-color: #c35da9;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.button {
+    border: none;
+    background: none;
+}
+
+.anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.anchor:hover {
+    text-decoration: underline;
+}
